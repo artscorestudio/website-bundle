@@ -19,8 +19,8 @@
         "symfony/twig-bundle": "~3.0",
         "twig/twig": "~1.10",
         "symfony/assetic-bundle": "^2.7",
-        "artscorestudio/core-bundle": "dev-master",
-        "artscorestudio/layout-bundle": "dev-master"
+        "artscorestudio/core-bundle": ">=1",
+        "artscorestudio/layout-bundle": ">=1"
 	},
 	"require-dev" : {
         "phpunit/phpunit": "5.1.*",
