@@ -1,4 +1,4 @@
-# Artscore Studio Layout Bundle
+# Artscore Studio Website Bundle
 
 Website Bundle is a Symfony 2+ bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
 
@@ -57,7 +57,7 @@ public function registerBundles()
 
 ### Next Steps
 
-Now you have completed the basic installation and configuration of the ASFLayoutBundle, you are ready to learn about more advanced features and usages of the bundle.
+Now you have completed the basic installation and configuration of the ASFWebsiteBundle, you are ready to learn about more advanced features and usages of the bundle.
 
 The following documents are available :
 * [ASFWebsiteBundle Configuration Reference](configuration.md)
