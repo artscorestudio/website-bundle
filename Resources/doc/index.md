@@ -1,6 +1,6 @@
 # Artscore Studio Website Bundle
 
-Website Bundle is a Symfony 2+ bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
+Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
 
 > IMPORTANT NOTICE: This bundle is still under development. Any changes will be done without prior notice to consumers of this package. Of course this code will become stable at a certain point, but for now, use at your own risk.
 
@@ -9,7 +9,7 @@ Website Bundle is a Symfony 2+ bundle for create and manage frontends in your Sy
 ## Prerequisites
 
 This version of the bundle requires :
-* Symfony 2.0+
+* Symfony 2.8+ / 3+
 * Assetic bundle 2.7+ (suggest [symfony/assetic-bundle](https://packagist.org/packages/symfony/assetic-bundle))
 * [ASFCoreBundle dev-master](https://github.com/artscorestudio/core-bundle)
 * [ASFLayoutBundle dev-master](https://github.com/artscorestudio/layout-bundle)

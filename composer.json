@@ -2,7 +2,7 @@
 	"name" : "artscorestudio/website-bundle",
 	"license" : "MIT",
 	"type" : "library",
-	"description" : "Website Bundle is a Symfony 2+ bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.",
+	"description" : "Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.",
 	"homepage" : "https://github.com/artscorestudio/website-bundle",
 	"authors" : [{
 		"name" : "Nicolas Claverie",
