@@ -12,7 +12,7 @@ namespace ASF\WebsiteBundle\Tests;
 use ASF\WebsiteBundle\ASFWebsiteBundle;
 
 /**
- * Core Bundle Test Suites
+ * Website Bundle Test Suites
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *

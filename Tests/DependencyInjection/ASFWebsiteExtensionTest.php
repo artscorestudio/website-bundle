@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class ASFCoreExtensionTest extends \PHPUnit_Framework_TestCase
+class ASFWebsiteExtensionTest extends \PHPUnit_Framework_TestCase
 {
 	/**
 	 * @var \ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension
