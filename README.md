@@ -1,6 +1,6 @@
 # Artscore Studio Website bundle
 
-Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
+Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your Symfony 2/3 application. This package is a part of Artscore Studio Framework.
 
 > IMPORTANT NOTICE: This bundle is still under development. Any changes will be done without prior notice to consumers of this package. Of course this code will become stable at a certain point, but for now, use at your own risk.
 
@@ -11,7 +11,6 @@ Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your S
 The bulk of the documentation is stored in the Resources/docs/index.md file in bundle :
 
 [Read the documentation for master](https://github.com/artscorestudio/website-bundle/blob/master/Resources/doc/index.md).
-
 
 ## Installation
 
