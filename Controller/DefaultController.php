@@ -9,7 +9,7 @@
  */
 namespace ASF\WebsiteBundle\Controller;
 
-use ASF\CoreBundle\Controller\ASFController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Default Controller gather generic app views
@@ -17,7 +17,7 @@ use ASF\CoreBundle\Controller\ASFController;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class DefaultController extends ASFController
+class DefaultController extends Controller
 {
     /**
      * Website Homepage
