@@ -56,3 +56,14 @@ public function registerBundles()
 	);
 }
 ```
+
+### Step 3 : Import ASFWebsiteBundle routing files
+
+Now that you have activated and configured the bundle, all that is left to do is import the ASFWebsiteBundle routing files.
+
+By importing the routing files you will have ready made pages for things such as website homepage, etc.
+
+```yaml
+asf_website:
+    resource: "@ASFWebsiteBundle/Resources/config/routing/routing.yml"
+```
