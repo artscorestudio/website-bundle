@@ -16,7 +16,7 @@ class AppKernel extends Kernel
      */
     public function registerBundles()
     {
-        $bundles = [
+        $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
         	new Symfony\Bundle\AsseticBundle\AsseticBundle(),
@@ -24,7 +24,7 @@ class AppKernel extends Kernel
         	new ASF\CoreBundle\ASFCoreBundle(),
         	new ASF\LayoutBundle\ASFLayoutBundle(),
             new ASF\WebsiteBundle\ASFWebsiteBundle()
-        ];
+        );
 
         return $bundles;
     }
