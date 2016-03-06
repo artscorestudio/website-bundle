@@ -22,7 +22,7 @@
         "twig/twig": "~1.10",
         "symfony/assetic-bundle": "^2.7",
         "artscorestudio/core-bundle": "1.0.3",
-        "artscorestudio/layout-bundle": ">=1"
+        "artscorestudio/layout-bundle": "1.0.0"
 	},
 	"autoload" : {
 		"psr-4" : {
