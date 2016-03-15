@@ -1,1 +1,5 @@
 {% extends "ASFLayoutBundle::frontend_model.html.twig" %}
+
+{% block primary_menu %}
+{{ knp_menu_render('primary_menu', {'style': 'navbar-right'}) }}
+{% endblock %}
