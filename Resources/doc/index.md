@@ -75,3 +75,4 @@ Now you have completed the basic installation and configuration of the ASFWebsit
 The following documents are available :
 * [Overriding Default ASFWebsiteBundle Templates](templates.md)
 * [Overriding Default ASFWebsiteBundle Controllers](controllers.md)
+* [Add new items in ASFWebsiteBundle menus](menus.md)
