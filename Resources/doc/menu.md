@@ -4,7 +4,7 @@ Menus in default layout are based on KnpMenuBundle. So, for all explanations abo
 
 ## Primary Menu
 
-For add an item in Primary Menu, simply create an event [listener or an event subscriber](http://symfony.com/doc/current/cookbook/event_dispatcher/event_listener.html) catch the event *asf_backend.menu.navbar.init*.
+For add an item in Primary Menu, simply create an event [listener or an event subscriber](http://symfony.com/doc/current/cookbook/event_dispatcher/event_listener.html) catch the event *asf_website.menu.primary.init*.
 
 The default website layout is based on Twitter Bootstrap layout example : [Dashboard](http://getbootstrap.com/examples/dashboard/).
 
