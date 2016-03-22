@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
         	new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             
+        	new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+        		
         	new ASF\CoreBundle\ASFCoreBundle(),
         	new ASF\LayoutBundle\ASFLayoutBundle(),
             new ASF\WebsiteBundle\ASFWebsiteBundle()
