@@ -4,9 +4,9 @@ Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your S
 
 > IMPORTANT NOTICE: This bundle is still under development. Any changes will be done without prior notice to consumers of this package. Of course this code will become stable at a certain point, but for now, use at your own risk.
 
-| [Master](https://github.com/artscorestudio/website-bundle) | [Latest Release (1.0.1)](https://github.com/artscorestudio/website-bundle/releases/tag/1.0.1) |
+| [Master](https://github.com/artscorestudio/website-bundle) | [Latest Release (1.1.0)](https://github.com/artscorestudio/website-bundle/releases/tag/1.1.0) |
 | ------ | -------------- |
-| [![Build Status](https://travis-ci.org/artscorestudio/website-bundle.svg?branch=master)](https://travis-ci.org/artscorestudio/website-bundle) | [![Build Status](https://travis-ci.org/artscorestudio/website-bundle.svg?branch=1.0.1)](https://travis-ci.org/artscorestudio/website-bundle) |
+| [![Build Status](https://travis-ci.org/artscorestudio/website-bundle.svg?branch=master)](https://travis-ci.org/artscorestudio/website-bundle) | [![Build Status](https://travis-ci.org/artscorestudio/website-bundle.svg?branch=1.1.0)](https://travis-ci.org/artscorestudio/website-bundle) |
 
 ## Documentation
 
