@@ -18,7 +18,7 @@ namespace ASF\WebsiteBundle\Event;
 final class WebsiteEvents
 {
 	/**
-	 * Primary Menu Builder Init Event
+	 * Primary Menu Root Init Event
 	 *  
 	 * @var string
 	 */

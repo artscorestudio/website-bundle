@@ -1,5 +1,7 @@
 {% extends "ASFWebsiteBundle::layout.html.twig" %}
 
+{% block asf_base_meta_title %}{{ page.getTitle() }}{% endblock %}
+
 {% block heading %}
 <div class="jumbotron">
 	<h1>{% block heading_title %}{{ page.getTitle() }}{% endblock %}</h1>
