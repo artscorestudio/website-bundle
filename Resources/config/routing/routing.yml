@@ -20,10 +20,10 @@ asf_website_public_page_route:
     path: /{path}
     defaults: { _controller: "ASFWebsiteBundle:Public:page" }
     requirements:
-        path: "^(?!admin|login|blog).+"
+        path: "^(?!admin|login|blog|js|css|fonts).+"
         
 asf_website_public_post_route:
     path: /{path}
     defaults: { _controller: "ASFWebsiteBundle:Public:post" }
     requirements:
-        path: "^(?!admin|login).+"
+        path: "^(?!admin|login|js|css|fonts).+"
