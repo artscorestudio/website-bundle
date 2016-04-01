@@ -19,6 +19,8 @@
         <service id="asf_website.menu.subscriber" class="%asf_website.menu.subscriber.class%">
         	<argument type="service" id="request_stack" />
         	<argument type="service" id="translator" />
+        	<argument type="service" id="asf_document.page.manager" />
+        	<argument type="service" id="asf_document.post.manager" />
         	<tag name="kernel.event_subscriber" />
         </service>
 	</services>

@@ -16,6 +16,8 @@ use Knp\Menu\Matcher\Voter\RouteVoter;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Translation\TranslatorInterface;
+use ASF\DocumentBundle\Entity\Manager\ASFDocumentEntityManagerInterface;
+use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
 
 /**
  * Website Menu Subscriber
@@ -36,12 +38,24 @@ class MenuSubscriber implements EventSubscriberInterface
 	protected $translator;
 	
 	/**
+	 * @var ASFEntityManagerInterface
+	 */
+	protected $pageManager;
+	
+	/**
+	 * @var ASFEntityManagerInterface
+	 */
+	protected $postManager;
+	
+	/**
 	 * @param RequestStack $request
 	 */
-	public function __construct(RequestStack $request, $translator)
+	public function __construct(RequestStack $request, $translator, $pageManager, $postManager)
 	{
 		$this->request = $request;
 		$this->translator = $translator;
+		$this->pageManager = $pageManager;
+		$this->postManager = $postManager;
 	}
 	
 	/**
@@ -66,9 +80,13 @@ class MenuSubscriber implements EventSubscriberInterface
 		$matcher->addVoter(new RouteVoter($this->request->getCurrentRequest()));
 		
 		// Home link
-		$item = $factory->createItem($this->translator->trans('Home', array(), 'asf_website'), array('route' => 'asf_website_homepage'));
+		$item = $factory->createItem($this->translator->trans('Home', array(), 'asf_website'), array('route' => 'asf_website_public_homepage'));
 		$menu->addChild($item);
+		$item->setCurrent($matcher->isCurrent($item));
 		
+		// Arts and Design link
+		$item = $factory->createItem($this->translator->trans('Home', array(), 'asf_website'), array('route' => 'asf_website_public_homepage'));
+		$menu->addChild($item);
 		$item->setCurrent($matcher->isCurrent($item));
 	}
 }

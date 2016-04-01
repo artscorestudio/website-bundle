@@ -1,0 +1,15 @@
+{% extends "ASFWebsiteBundle::backend_layout.html.twig" %}
+
+{% trans_default_domain 'asf_website' %}
+
+{% block heading %}
+<div class="jumbotron">
+	<h1>{% block heading_title %}Website Configuration Manager{% endblock %}</h1>
+	<p class="lead">{% block heading_lead %}This section allows you to set configuration for your public website.{% endblock %}</p>
+	{% block heading_action_btn %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

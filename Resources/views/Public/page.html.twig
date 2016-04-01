@@ -1,0 +1,11 @@
+{% extends "ASFWebsiteBundle::layout.html.twig" %}
+
+{% block heading %}
+<div class="jumbotron">
+	<h1>{% block heading_title %}{{ page.getTitle() }}{% endblock %}</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+	{{ page.getContent()|raw }}
+{% endblock %}

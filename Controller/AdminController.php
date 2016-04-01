@@ -12,20 +12,23 @@ namespace ASF\WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Default Controller gather generic app views
+ * Admin Controller
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class DefaultController extends Controller
+class AdminController extends Controller
 {
     /**
-     * Website Homepage
+     * Homepage
      * 
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        return $this->render('ASFWebsiteBundle:Default:index.html.twig');
+    	if ( false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') )
+    		throw new AccessDeniedException();
+    	
+        return $this->render('ASFWebsiteBundle:Admin:index.html.twig');
     }
 }

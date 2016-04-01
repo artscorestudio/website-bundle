@@ -23,6 +23,7 @@
         "symfony/assetic-bundle": "^2.7",
         "artscorestudio/core-bundle": "^1.0@dev",
         "artscorestudio/layout-bundle": "^1.0@dev",
+        "artscorestudio/document-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "^2.0"
 	},
 	"autoload" : {
