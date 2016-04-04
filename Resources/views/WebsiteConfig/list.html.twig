@@ -1,0 +1,25 @@
+{% extends 'ASFWebsiteBundle::backend_layout.html.twig' %}
+
+{% trans_default_domain 'asf_website' %}
+
+{% block title %}{{ 'Website Configuration list'|trans }}{% endblock %}
+
+{% block asf_website_content %}
+
+	{% block page_title %}{{ 'Website Configuration list'|trans }}{% endblock %}
+	
+	{% block breadcrumbs_tree %}
+	 > <a href="{{ path('asf_website_config_list') }}" title="{{ 'Website Configuration list'|trans }}">{{ 'Website Configuration list'|trans }}</a>
+	{% endblock %}
+	
+	{% block asf_content_cmd %}
+	<a class="btn btn-default" href="{{ path('asf_website_config_add') }}" title="{{ 'Add new configuration'|trans }}">{{ 'Add new configuration'|trans }}</a>
+	{% endblock asf_content_cmd %}
+	
+	<div class="row">
+		<div class="col-xs-12">
+			{{ grid(grid) }}
+		</div>
+	</div>
+	
+{% endblock %}

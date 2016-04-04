@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+	
+	<parameters>
+		<!-- Generic Entity Manager -->
+    	<parameter key="asf_website.entity.manager.class">ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManager</parameter>
+		
+		<parameter key="asf_website.group_parameter.entity.class">ASF\WebsiteBundle\Entity\Group</parameter>
+		<parameter key="asf_website.parameter.entity.class">ASF\WebsiteBundle\Entity\Parameter</parameter>
+		
+		<!-- Form Factory -->
+		<parameter key="asf_website.form.factory.class">ASF\WebsiteBundle\Form\Factory\FormFactory</parameter>
+		
+		<!-- Forms -->
+		<parameter key="asf_website.form.type.group_parameter.class">ASF\WebsiteBundle\Form\Type\GroupType</parameter>
+		<parameter key="asf_website.form.type.parameter.class">ASF\WebsiteBundle\Form\Type\ParameterType</parameter>
+		
+		<!-- Twig -->
+		<parameter key="asf_website.twig.etension.website.class">ASF\WebsiteBundle\Twig\Extension\WebsiteExtension</parameter>
+	</parameters>
+	 
+	<services>
+        
+        <!-- Group Parameter Entity Manager -->
+        <service id="asf_website.group_parameter.manager" class="%asf_website.entity.manager.class%">
+            <tag name="asf_core.manager" entity="%asf_website.group_parameter.entity.class%" />
+        </service>
+        
+        <!-- Group Parameter Form -->
+		<service id="asf_website.form.factory.group_parameter" class="%asf_website.form.factory.class%">
+            <argument type="service" id="form.factory" />
+            <argument>%asf_website.group.form.name%</argument>
+            <argument>%asf_website.group.form.type%</argument>
+        </service>
+        
+		<service id="asf_website.form.type.group_parameter" class="%asf_website.form.type.group_parameter.class%">
+        	<argument type="service" id="asf_website.group_parameter.manager" />
+			<tag name="form.type" alias="website_group_parameter_type" />
+		</service>
+        
+        <!-- Parameter Entity Manager -->
+        <service id="asf_website.parameter.manager" class="%asf_website.entity.manager.class%">
+            <tag name="asf_core.manager" entity="%asf_website.parameter.entity.class%" />
+        </service>
+        
+        <!-- Parameter Form -->
+    	<service id="asf_website.form.factory.parameter" class="%asf_website.form.factory.class%">
+            <argument type="service" id="form.factory" />
+            <argument>%asf_website.parameter.form.name%</argument>
+            <argument>%asf_website.parameter.form.type%</argument>
+        </service>
+        
+		<service id="asf_website.form.type.parameter" class="%asf_website.form.type.parameter.class%">
+        	<argument type="service" id="asf_website.parameter.manager" />
+        	<argument type="service" id="asf_website.group_parameter.manager" />
+			<tag name="form.type" alias="website_parameter_type" />
+		</service>
+		
+		<!-- Twig -->
+		<service id="asf_website.twig.extension.website" class="%asf_website.twig.etension.website.class%">
+			<argument type="service" id="asf_website.group_parameter.manager" />
+			<argument>%asf_website.group.default_config_id%</argument>
+			<tag name="twig.extension" />
+		</service>
+		
+	</services>
+	
+</container>

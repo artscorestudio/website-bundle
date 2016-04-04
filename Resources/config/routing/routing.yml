@@ -10,7 +10,11 @@ asf_website_menu_homepage:
 asf_website_menu_edit:
     path: /admin/website/menu/edit/{id}
     defaults: { _controller: "ASFWebsiteBundle:MenuBuilder:edit" }
-   
+
+asf_website_config:
+    prefix: /admin/website/config
+    resource: "@ASFWebsiteBundle/resources/config/routing/website_config.yml"
+       
 # Frontend
 asf_website_public_homepage:
     path: /

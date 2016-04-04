@@ -1,0 +1,23 @@
+{% extends 'ASFWebsiteBundle::backend_layout.html.twig' %}
+
+{% block title %}{{ group.getName() }}{% endblock %}
+
+{% trans_default_domain 'asf_website' %}
+
+{% block asf_website_content %}
+
+{% block breadcrumbs_tree %}
+ > <a href="{{ path('asf_website_config_list') }}" title="{{ 'Website configuration list'|trans }}">{{ 'Website configuration list'|trans }}</a>
+{% if brand.getId() is not null %}
+ > <a href="{{ path('asf_website_config_edit', {id: group.getId()}) }}" title="{{ group.getName() }}">{{ group.getName() }}</a>
+{% else %}
+ > <a href="{{ path('asf_website_config_add') }}" title="{{ group.getName() }}">{{ group.getName() }}</a>
+{% endif %}
+{% endblock %}
+
+<div class="container-fluid">
+	<div class="row">
+	{{ form(form) }}
+	</div>
+</div>
+{% endblock %}

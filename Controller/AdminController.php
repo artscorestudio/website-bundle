@@ -31,4 +31,14 @@ class AdminController extends Controller
     	
         return $this->render('ASFWebsiteBundle:Admin:index.html.twig');
     }
+    
+    public function editMetaInfoAction()
+    {
+    	if ( false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') )
+    		throw new AccessDeniedException();
+    	
+    	
+    		
+        return $this->render('ASFWebsiteBundle:Admin:edit-meta-info.html.twig'); 
+    }
 }
