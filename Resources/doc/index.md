@@ -2,7 +2,7 @@
 
 Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your Symfony 2/3 application. This package is a part of Artscore Studio Framework.
 
-The goal of this bundle is to embedded a set of public website layouts based on Twitter Bootstrap and jQuery. This bundle is a child bundle of [ASFLayoutBundle](https://packagist.org/packages/artscorestudio/layout-bundle). 
+The goal of this bundle is to embedded a set of public website layouts based on Twitter Bootstrap and jQuery. This bundle is a child bundle of [ASFLayoutBundle][1]. 
 
 > IMPORTANT NOTICE: This bundle is still under development. Any changes will be done without prior notice to consumers of this package. Of course this code will become stable at a certain point, but for now, use at your own risk.
 
@@ -11,10 +11,10 @@ The goal of this bundle is to embedded a set of public website layouts based on 
 ## Prerequisites
 
 This version of the bundle requires :
-* Symfony >= 2.8 / >= 3+
-* [Assetic bundle >= 2.7](https://packagist.org/packages/symfony/assetic-bundle)
-* [ASFCoreBundle >= 1](https://packagist.org/packages/artscorestudio/core-bundle)
-* [ASFLayoutBundle dev-master](https://packagist.org/packages/artscorestudio/layout-bundle)
+* [Symfony 2.8+ LTS / 3.0+][2]
+* Assetic bundle 2.7+ (suggest [symfony/assetic-bundle][3])
+* ASFCoreBundle >= 1 (suggest [artscorestudio/core-bundle][4])
+* ASFLayoutBundle >= 1 (suggest [artscorestudio/layout-bundle][5])
 
 ### Translations
 
@@ -26,7 +26,7 @@ framework:
     translator: ~
 ```
 
-For more information about translations, check [Symfony documentation](https://symfony.com/doc/current/book/translation.html).
+For more information about translations, check [Symfony documentation][6].
 
 ## Installation
 
@@ -73,6 +73,16 @@ asf_website:
 Now you have completed the basic installation and configuration of the ASFWebsiteBundle, you are ready to learn about more advanced features and usages of the bundle.
 
 The following documents are available :
-* [Overriding Default ASFWebsiteBundle Templates](templates.md)
-* [Overriding Default ASFWebsiteBundle Controllers](controllers.md)
-* [Add new items in ASFWebsiteBundle menus](menus.md)
+* [Overriding Default ASFWebsiteBundle Templates][7]
+* [Overriding Default ASFWebsiteBundle Controllers][8]
+* [Add new items in ASFWebsiteBundle menus][9]
+
+[1]: https://packagist.org/packages/artscorestudio/layout-bundle
+[2]: https://symfony.com/download
+[3]: https://packagist.org/packages/symfony/assetic-bundle 
+[4]: https://packagist.org/packages/artscorestudio/core-bundle
+[5]: https://packagist.org/packages/artscorestudio/layout-bundle
+[6]: https://symfony.com/doc/current/book/translation.html
+[7]: templates.md
+[8]: controllers.md
+[9]: menus.md
