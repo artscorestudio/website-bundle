@@ -35,43 +35,40 @@ class Configuration implements ConfigurationInterface
 	        	->scalarNode('form_theme')
 	        		->defaultValue('ASFWebsiteBundle:Form:fields.html.twig')
 	        	->end()
-        		->append($this->addGroupParameterNode())
-        		->append($this->addParameterParameterNode())
+        		->append($this->addConfigParameterNode())
+        		->append($this->addConfigParameterParameterNode())
         	->end();
         
         return $treeBuilder;
     }
     
     /**
-     * Add Group Parameter Entity Configuration
+     * Add Website Config Entity Configuration
      */
-    protected function addGroupParameterNode()
+    protected function addConfigParameterNode()
     {
     	$builder = new TreeBuilder();
-    	$node = $builder->root('group');
+    	$node = $builder->root('config');
     
     	$node
     		->treatTrueLike(array('form' => array(
-    			'type' => "ASF\WebsiteBundle\Form\Type\GroupType",
-    			'name' => 'website_group_parameter_type'
+    			'type' => "ASF\WebsiteBundle\Form\Type\ConfigType",
+    			'name' => 'website_config_type'
     		)))
     		->treatFalseLike(array('form' => array(
-    			'type' => "ASF\WebsiteBundle\Form\Type\GroupType",
-    			'name' => 'website_group_parameter_type'
+    			'type' => "ASF\WebsiteBundle\Form\Type\ConfigType",
+    			'name' => 'website_config_type'
     		)))
     		->addDefaultsIfNotSet()
     		->children()
-    			->scalarNode('default_config_id')
-    				->defaultValue(1)
-    			->end()
     			->arrayNode('form')
     				->addDefaultsIfNotSet()
     				->children()
     					->scalarNode('type')
-    						->defaultValue('ASF\WebsiteBundle\Form\Type\GroupType')
+    						->defaultValue('ASF\WebsiteBundle\Form\Type\ConfigType')
     					->end()
     					->scalarNode('name')
-    						->defaultValue('website_group_parameter_type')
+    						->defaultValue('website_config_type')
     					->end()
     					->arrayNode('validation_groups')
     						->prototype('scalar')->end()
@@ -86,9 +83,9 @@ class Configuration implements ConfigurationInterface
     }
     
     /**
-     * Add Group Parameter Entity Configuration
+     * Add Website Config Parameter Entity Configuration
      */
-    protected function addParameterParameterNode()
+    protected function addConfigParameterParameterNode()
     {
     	$builder = new TreeBuilder();
     	$node = $builder->root('parameter');

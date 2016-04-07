@@ -44,18 +44,18 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addGroupParameterNode
+	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addConfigParameterNode
 	 */
-	public function testGroupLoadFormName()
+	public function testConfigLoadFormName()
 	{
-		$this->assertEquals('ASF\WebsiteBundle\Form\Type\GroupType', $this->defaultConfig['group']['form']['type']);
-		$this->assertEquals('website_group_parameter_type', $this->defaultConfig['group']['form']['name']);
+		$this->assertEquals('ASF\WebsiteBundle\Form\Type\ConfigType', $this->defaultConfig['config']['form']['type']);
+		$this->assertEquals('website_config_type', $this->defaultConfig['config']['form']['name']);
 	}
 	
 	/**
-	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addParameterParameterNode
+	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addConfigParameterParameterNode
 	 */
-	public function testGroupParameterLoadFormName()
+	public function testConfigParameterLoadFormName()
 	{
 		$this->assertEquals('ASF\WebsiteBundle\Form\Type\ParameterType', $this->defaultConfig['parameter']['form']['type']);
 		$this->assertEquals('website_parameter_type', $this->defaultConfig['parameter']['form']['name']);

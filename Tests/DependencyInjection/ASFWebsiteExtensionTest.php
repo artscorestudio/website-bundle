@@ -11,6 +11,9 @@ namespace ASF\WebsiteBundle\Tests\DependencyInjection;
 
 use ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Bundle\AsseticBundle\DependencyInjection\AsseticExtension;
+use Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension;
+use FOS\JsRoutingBundle\DependencyInjection\FOSJsRoutingExtension;
 
 /**
  * Bundle's Extension Test Suites
@@ -23,7 +26,7 @@ class ASFWebsiteExtensionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @var \ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension
 	 */
-	protected $extension;
+	private $extension;
 	
 	/**
 	 * {@inheritDoc}
@@ -41,7 +44,93 @@ class ASFWebsiteExtensionTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testLoadExtension()
 	{
-	    $container = new ContainerBuilder();
-		$this->extension->load(array(), $container);
+	    $this->extension->load(array(), $this->getContainer());
+	}
+	
+	/**
+	 * @covers ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension::prepend
+	 */
+	public function testPrependExtension()
+	{
+		$this->extension->prepend($this->getContainer());
+	}
+	
+	/**
+	 * @covers ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension::configureTwigBundle
+	 */
+	public function testConfigureTwigBundle()
+	{
+		$container = new ContainerBuilder();
+		$this->extension->configureTwigBundle($container, array(
+			'asf_website' => array('form_theme' => 'ASFWebsiteBundle:Form:fields.html.twig') 
+		));
+	}
+
+	/**
+	 * Return a mock object of ContainerBuilder
+	 *
+	 * @return \Symfony\Component\DependencyInjection\ContainerBuilder
+	 */
+	protected function getContainer($bundles = null, $extensions = null)
+	{
+		$bag = $this->getMock('Symfony\Component\DependencyInjection\ParameterBag\ParameterBag');
+		$bag->method('add');
+		 
+		if ( is_null($bundles) ) {
+			$bundles = $bundles = array(
+				'AsseticBundle' => 'Symfony\Bundle\AsseticBundle\AsseticBundle',
+				'TwigBundle' => 'Symfony\Bundle\TwigBundle\TwigBundle',
+				'FOSJsRoutingBundle' => 'FOS\JsRoutingBundle\FOSJsRoutingBundle',
+			);
+		}
+		 
+		if ( is_null($extensions) ) {
+			$extensions = array(
+				'assetic' => new AsseticExtension(),
+				'twig' => new TwigExtension(),
+				'fos_js_routing' => new FOSJsRoutingExtension(),
+			);
+		}
+		
+		$container = $this->getMock('Symfony\Component\DependencyInjection\ContainerBuilder');
+		$container->method('getParameter')->with('kernel.bundles')->willReturn($bundles);
+		$container->method('getExtensions')->willReturn($extensions);
+
+		$container->method('getExtensionConfig')->willReturn(array());
+		$container->method('prependExtensionConfig');
+		$container->method('setAlias');
+		$container->method('getExtension');
+		 
+		$container->method('addResource');
+		$container->method('setParameter');
+		$container->method('getParameterBag')->willReturn($bag);
+		$container->method('setDefinition');
+		$container->method('setParameter');
+		
+		return $container;
+	}
+	
+	/**
+	 * Return bundle's default configuration
+	 *
+	 * @return array
+	 */
+	protected function getDefaultConfig()
+	{
+		return array(
+			'form_theme' => 'ASFWebsiteBundle:Form:fields.html.twig',
+			'config' => array(
+				'form' => array(
+					'type' => "ASF\WebsiteBundle\Form\Type\ConfigType",
+					'name' => 'website_config_type'	
+				)
+			),
+			'parameter' => array(
+				'form' => array(
+					'type' => "ASF\WebsiteBundle\Form\Type\ParameterType",
+					'name' => 'website_parameter_type'
+				)
+			)
+		);
 	}
 }
