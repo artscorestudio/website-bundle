@@ -1,0 +1,9 @@
+ASF\UserBundle\Entity\User:
+    suAdmin:
+        username: admin
+        email: info@artscore-studio.fr
+        enabled: 1
+        salt: go1b2b82begw0os4osc84ocgs0wkkws
+        password: tYfSgzvxKLB5AEv6xJAxaClRE5SmRx4kdk/Nj7WvWzLDAkeCsjHcxEN901t1WcL6yXx+hxCNx5XuHjs7tJA99A==
+        roles: [ROLE_SUPER_ADMIN]
+        

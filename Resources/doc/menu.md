@@ -1,12 +1,12 @@
 # Add new items in ASFWebsiteBundle menus
 
-Menus in default layout are based on KnpMenuBundle. So, for all explanations about it, [read its documentation](http://symfony.com/doc/master/bundles/KnpMenuBundle/index.html).
+Menus in default layout are based on KnpMenuBundle. So, for all explanations about it, [read its documentation][1].
 
 ## Primary Menu
 
-For add an item in Primary Menu, simply create an event [listener or an event subscriber](http://symfony.com/doc/current/cookbook/event_dispatcher/event_listener.html) catch the event *asf_website.menu.primary.init*.
+For add an item in Primary Menu, simply create an event [listener or an event subscriber][2] catch the event *asf_website.menu.primary.init*.
 
-The default website layout is based on Twitter Bootstrap layout example : [Dashboard](http://getbootstrap.com/examples/dashboard/).
+The default website layout is based on Twitter Bootstrap layout example : [Dashboard][3].
 
 Here is an exemple of event subscriber :
 
@@ -61,3 +61,7 @@ class MenuSubscriber implements EventSubscriberInterface
 	}
 }
 ```
+
+[1]: http://symfony.com/doc/master/bundles/KnpMenuBundle/index.html
+[2]: http://symfony.com/doc/current/cookbook/event_dispatcher/event_listener.html
+[3]: http://getbootstrap.com/examples/dashboard/

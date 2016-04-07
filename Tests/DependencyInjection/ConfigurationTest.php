@@ -20,13 +20,44 @@ use ASF\WebsiteBundle\DependencyInjection\Configuration;
  */
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
+	/**
+	 * @var array
+	 */
+	private $defaultConfig;
+	
+	/**
+	 * {@inheritDoc}
+	 * @see PHPUnit_Framework_TestCase::setUp()
+	 */
+	public function setUp()
+	{
+		$processor = new Processor();
+		$this->defaultConfig = $processor->processConfiguration(new Configuration(), array());
+	}
+	
     /**
      * @covers ASF\WebsiteBundle\DependencyInjection\Configuration
      */
 	public function testDefaultConfiguration()
 	{
-		$processor = new Processor();
-		$config = $processor->processConfiguration(new Configuration(), array());
-		$this->assertCount(0, $config);
+		$this->assertCount(3, $this->defaultConfig);
+	}
+	
+	/**
+	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addGroupParameterNode
+	 */
+	public function testGroupLoadFormName()
+	{
+		$this->assertEquals('ASF\WebsiteBundle\Form\Type\GroupType', $this->defaultConfig['group']['form']['type']);
+		$this->assertEquals('website_group_parameter_type', $this->defaultConfig['group']['form']['name']);
+	}
+	
+	/**
+	 * @covers ASF\WebsiteBundle\DependencyInjection\Configuration::addParameterParameterNode
+	 */
+	public function testGroupParameterLoadFormName()
+	{
+		$this->assertEquals('ASF\WebsiteBundle\Form\Type\ParameterType', $this->defaultConfig['parameter']['form']['type']);
+		$this->assertEquals('website_parameter_type', $this->defaultConfig['parameter']['form']['name']);
 	}
 }

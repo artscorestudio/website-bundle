@@ -6,7 +6,7 @@ As you start to incorporate ASFWebsiteBundle into your application, you will pro
 
 ## Overriding The Default layout.html.twig
 
-It is highly recommended that you override the Resources/views/layout.html.twig template so that the pages provided by the ASFWebsiteBundle have a similar look and feel to the rest of your application. An example of overriding this layout template is demonstrated below using both of the overriding options listed above.
+It is highly recommended that you override the *Resources/views/layout.html.twig* template so that the pages provided by the ASFWebsiteBundle have a similar look and feel to the rest of your application. An example of overriding this layout template is demonstrated below using both of the overriding options listed above.
 
 Here is the default layout.html.twig provided by the ASFWebsiteBundle :
 
@@ -18,7 +18,7 @@ Here is the default layout.html.twig provided by the ASFWebsiteBundle :
 
 ### Define New Template In app/Resources
 
-The easiest way to override a bundle's template is to simply place a new one in your app/Resources folder. To override the layout template located at Resources/views/layout.html.twig in the ASFWebsiteBundle directory, you would place your new layout template at app/Resources/ASFWebsiteBundle/views/layout.html.twig.
+The easiest way to override a bundle's template is to simply place a new one in your app/Resources folder. To override the layout template located at *Resources/views/layout.html.twig* in the ASFWebsiteBundle directory, you would place your new layout template at *app/Resources/ASFWebsiteBundle/views/layout.html.twig*.
 
 As you can see the pattern for overriding templates in this way is to create a folder with the name of the bundle class in the app/Resources directory. Then add your new template to this folder, preserving the directory structure from the original bundle.
 
@@ -46,7 +46,7 @@ class AcmeWebsiteBundle extends Bundle
 
 By returning the name of the bundle in the getParent method of your bundle class, you are telling the Symfony Framework that your bundle is a child of the ASFWebsiteBundle.
 
-Now that you have declared your bundle as a child of the ASFWebsiteBundle, you can override the parent bundle's templates. To override the layout template, simply create a new file in the src/Acme/WebsiteBundle/Resources/views directory named layout.html.twig. Notice how this file resides in the same exact path relative to the bundle directory as it does in the ASFWebsiteBundle.
+Now that you have declared your bundle as a child of the ASFWebsiteBundle, you can override the parent bundle's templates. To override the layout template, simply create a new file in the *src/Acme/WebsiteBundle/Resources/views* directory named *layout.html.twig*. Notice how this file resides in the same exact path relative to the bundle directory as it does in the ASFWebsiteBundle.
 
 After overriding a template in your child bundle, you must clear the cache for the override to take effect, even in a development environment.
 

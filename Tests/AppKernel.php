@@ -20,12 +20,14 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
         	new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+        	new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+        		
         	new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         		
         	new ASF\CoreBundle\ASFCoreBundle(),
         	new ASF\LayoutBundle\ASFLayoutBundle(),
-            new ASF\WebsiteBundle\ASFWebsiteBundle()
+            new ASF\WebsiteBundle\ASFWebsiteBundle(),
         );
 
         return $bundles;

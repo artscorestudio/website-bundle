@@ -10,6 +10,7 @@
 namespace ASF\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Default Controller gather generic app views
@@ -29,6 +30,13 @@ class PublicController extends Controller
         return $this->render('ASFWebsiteBundle:Public:index.html.twig');
     }
     
+    /**
+     * Website Page Controller
+     * 
+     * @param string $path
+     * @throws \Exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function pageAction($path)
     {
     	$parts = explode('/', $path);
@@ -36,7 +44,7 @@ class PublicController extends Controller
     	$result = $this->get('asf_document.page.manager')->getRepository()->findBySlug($path);
     	
     	if ( count($result) == 0 ) {
-    		throw new \Exception('Unable to find the page.');
+    		throw new NotFoundHttpException('Ooops ! Page not found.');
     	}
     	
     	$page = $result[0];
