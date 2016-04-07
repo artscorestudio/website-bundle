@@ -18,8 +18,7 @@ use Doctrine\ORM\QueryBuilder;
 
 use APY\DataGridBundle\Grid\Action\RowAction;
 use APY\DataGridBundle\Grid\Source\Entity;
-use ASF\WebsiteBundle\Form\Handler\GroupFormHandler;
-
+use ASF\WebsiteBundle\Form\Handler\ConfigFormHandler;
 
 /**
  * Website Config Controller
@@ -27,7 +26,7 @@ use ASF\WebsiteBundle\Form\Handler\GroupFormHandler;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class WebsiteConfigController extends Controller
+class ConfigController extends Controller
 {
 	/**
 	 * List all website config
@@ -41,7 +40,7 @@ class WebsiteConfigController extends Controller
 			throw new AccessDeniedException();
 	
 		// Set Datagrid source
-		$source = new Entity($this->get('asf_website.group_parameter.manager')->getClassName());
+		$source = new Entity($this->get('asf_website.config.manager')->getClassName());
 		$tableAlias = $source->getTableAlias();
 		$source->manipulateQuery(function($query) use ($tableAlias){
 			$query instanceof QueryBuilder;
@@ -57,12 +56,12 @@ class WebsiteConfigController extends Controller
 
 		// Attach the source to the grid
 		$grid->setSource($source);
-		$grid->setId('asf_group_parameter_list');
+		$grid->setId('asf_website_config_list');
 
 		// Columns configuration
 		$grid->hideColumns(array('id'));
 	
-		$grid->getColumn('name')->setTitle($this->get('translator')->trans('Parameter group name', array(), 'asf_website'))
+		$grid->getColumn('name')->setTitle($this->get('translator')->trans('Config name', array(), 'asf_website'))
 			->setDefaultOperator('like')
 			->setOperatorsVisible(false);
 
@@ -72,19 +71,19 @@ class WebsiteConfigController extends Controller
 
 		$deleteAction = new RowAction('btn_delete', 'asf_website_config_delete', true);
 		$deleteAction->setRouteParameters(array('id'))
-			->setConfirmMessage($this->get('translator')->trans('Do you want to delete this config ?', array(), 'asf_website'));
+			->setConfirmMessage($this->get('translator')->trans('Do you want to delete this config?', array(), 'asf_website'));
 		$grid->addRowAction($deleteAction);
 	
-		$grid->setNoDataMessage($this->get('translator')->trans('No config were found.', array(), 'asf_website'));
+		$grid->setNoDataMessage($this->get('translator')->trans('No config was found.', array(), 'asf_website'));
 	
-		return $grid->getGridResponse('ASFWebsiteBundle:WebsiteConfig:list.html.twig');
+		return $grid->getGridResponse('ASFWebsiteBundle:Config:list.html.twig');
 	}
 	
 	/**
 	 * Add or edit a website config
 	 *
 	 * @param Request $request
-	 * @param integer $id           ASFWebsiteBundle:Group Entity ID
+	 * @param integer $id           ASFWebsiteBundle:Config Entity ID
 	 *
 	 * @throws AccessDeniedException If authenticate user is not allowed to access to this resource (minimum ROLE_ADMIN)
 	 * @throws \Exception            Error on group not found
@@ -96,61 +95,57 @@ class WebsiteConfigController extends Controller
 		if ( false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') )
 			throw new AccessDeniedException();
 		  
-		$formFactory = $this->get('asf_website.form.factory.group_parameter');
-		$groupManager = $this->get('asf_website.group_parameter.manager');
+		$formFactory = $this->get('asf_website.form.factory.config');
+		$configManager = $this->get('asf_website.config.manager');
 		  
 		if ( !is_null($id) ) {
-			$group = $groupManager->getRepository()->findOneBy(array('id' => $id));
+			$config = $configManager->getRepository()->findOneBy(array('id' => $id));
 			$success_message = $this->get('translator')->trans('Updated successfully', array(), 'asf_website');
 				
 		} else {
-			$group = $groupManager->createInstance();
-			$group->setName($this->get('translator')->trans('New group', array(), 'asf_website'));
+			$config = $configManager->createInstance();
+			$config->setName($this->get('translator')->trans('New website config', array(), 'asf_website'));
 			$success_message = $this->get('translator')->trans('Created successfully', array(), 'asf_website');
 		}
 	
-		if ( is_null($group) )
+		if ( is_null($config) )
 			throw new \Exception($this->get('translator')->trans('An error occurs when generating or getting the configuration', array(), 'asf_website'));
 
 		$form = $formFactory->createForm();
-		$form->setData($group);
+		$form->setData($config);
 		
-		$formHandler = new GroupFormHandler($form, $request, $this->container);
+		$formHandler = new ConfigFormHandler($form, $request, $this->container);
 		
 		if ( true === $formHandler->process() ) {
-			
 			try {
-				
-				if ( is_null($group->getId()) ) {
-					$groupManager->getEntityManager()->persist($group);
+				if ( is_null($config->getId()) ) {
+					$configManager->getEntityManager()->persist($config);
 				}
-				$groupManager->getEntityManager()->flush();
+				$configManager->getEntityManager()->flush();
 				 
-				if ( $this->has('asf_layout.flash_message') ) {
-					$this->get('asf_layout.flash_message')->success($success_message);
-				}
+				$this->get('asf_layout.flash_message')->success($success_message);
 
-				return $this->redirect($this->get('router')->generate('asf_website_config_edit', array('id' => $group->getId())));
+				return $this->redirect($this->get('router')->generate('asf_website_config_edit', array('id' => $config->getId())));
 
 			} catch(\Exception $e) {
-				if ( $this->has('asf_layout.flash_message') ) {
-					$this->get('asf_layout.flash_message')->danger($e->getMessage());
-				}
+				$this->get('asf_layout.flash_message')->danger($e->getMessage());
 			}
 		}
 
-		return $this->render('ASFWebsiteBundle:WebsiteConfig:edit.html.twig', array(
-			'group' => $group,
+		return $this->render('ASFWebsiteBundle:Config:edit.html.twig', array(
+			'config' => $config,
 			'form' => $form->createView()
 		));
 	}
 	
 	/**
-	 * Delete a group
+	 * Delete a website config
 	 *
-	 * @param  integer $id           ASFWebsiteBundle:Group Entity ID
+	 * @param  integer $id           ASFWebsiteBundle:Config Entity ID
+	 * 
 	 * @throws AccessDeniedException If authenticate user is not allowed to access to this resource (minimum ROLE_ADMIN)
-	 * @throws \Exception            Error on group not found or on removing element from DB
+	 * @throws \Exception            Error on Config not found or on removing element from DB
+	 * 
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 	public function deleteAction($id)
@@ -158,20 +153,16 @@ class WebsiteConfigController extends Controller
 		if ( false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') )
 			throw new AccessDeniedException();
 		  
-		$group = $this->get('asf_website.group.manager')->getRepository()->findOneBy(array('id' => $id));
+		$config = $this->get('asf_website.config.manager')->getRepository()->findOneBy(array('id' => $id));
 
 		try {
-			$this->get('asf_website.group.manager')->getEntityManager()->remove($group);
-			$this->get('asf_website.group.manager')->getEntityManager()->flush();
+			$this->get('asf_website.config.manager')->getEntityManager()->remove($config);
+			$this->get('asf_website.config.manager')->getEntityManager()->flush();
 			
-			if ( $this->has('asf_layout.flash_message') ) {
-				$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The group "%name%" successfully deleted.', array('%name%' => $group->getName()), 'asf_website'));
-			}
+			$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The website config "%name%" successfully deleted.', array('%name%' => $config->getName()), 'asf_website'));
 				
 		} catch (\Exception $e) {
-			if ( $this->has('asf_layout.flash_message') ) {
-				$this->get('asf_layout.flash_message')->danger($e->getMessage());
-			}
+			$this->get('asf_layout.flash_message')->danger($e->getMessage());
 		}
 
 		return $this->redirect($this->get('router')->generate('asf_website_config_list'));

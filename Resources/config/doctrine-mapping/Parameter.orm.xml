@@ -10,12 +10,12 @@
 	    	<generator strategy="AUTO" />
 	    </id>
 	    
-		<field name="alias" type="string" nullable="false" />
+		<field name="name" type="string" nullable="false" />
 	    
 	    <field name="value" type="text" nullable="false" />
 	    
-		<many-to-one field="Group" target-entity="Group" inversed-by="parameters">
-			<join-column name="group_id" referenced-column-name="id" />
+		<many-to-one field="config" target-entity="Config" inversed-by="parameters">
+			<join-column name="config_id" referenced-column-name="id" />
 		</many-to-one>
 
 	</entity>

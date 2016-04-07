@@ -14,7 +14,7 @@ use ASF\CoreBundle\Form\Handler\FormHandlerModel;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use ASF\WebsiteBundle\Model\Config\Group;
+use ASF\WebsiteBundle\Model\Config\Config;
 
 /**
  * Group Form Handler
@@ -22,7 +22,7 @@ use ASF\WebsiteBundle\Model\Config\Group;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class GroupFormHandler extends FormHandlerModel
+class ConfigFormHandler extends FormHandlerModel
 {
 	/**
 	 * @var ContainerInterface
@@ -47,12 +47,28 @@ class GroupFormHandler extends FormHandlerModel
 	public function processForm($model)
 	{
 		try {
-			$model instanceof Group;
-			foreach($model->getParameters() as $parameter ) {
-				$parameter->setGroup($model);
+			$configManager = $this->container->get('asf_website.config.manager');
+			
+			// Check configuration alias (internal use)
+			$isExists = $configManager->getRepository()->findOneBy(array('alias' => $model->getAlias()));
+			if ( $isExists !== null ) {
+				throw new \Exception($this->container->get('asf_layout.flash_message')->danger($this->container->get('translator')->trans('A website configuration already exists with alias "%name%".', array('%name%' => $model->getAlias()), 'asf_website')));
 			}
 			
-			$db_parameters = $this->container->get('asf_website.parameter.manager')->getRepository()->findBy(array('group' => $model));
+			// Check default configuration
+			$defaultExists = $configManager->getRepository()->findOneBy(array('isDefault' => true));
+			if ( $defaultExists === null ) {
+				$model->setIsDefault(true);
+			} elseif ($model->getIsDefault() == true && $model->getId() != $defaultExists->getId() ) {
+				throw new \Exception($this->container->get('asf_layout.flash_message')->danger($this->container->get('translator')->trans('A default website configuration already exists ("%name%").', array('%name%' => $defaultExists->getName()), 'asf_website')));
+			}
+			
+			$model instanceof Config;
+			foreach($model->getParameters() as $parameter ) {
+				$parameter->setConfig($model);
+			}
+			
+			$db_parameters = $this->container->get('asf_website.parameter.manager')->getRepository()->findBy(array('config' => $model));
 			foreach($db_parameters as $db_parameter) {
 				if ( !$model->getParameters()->contains($db_parameter) ) {
 					$model->removeParameter($db_parameter);

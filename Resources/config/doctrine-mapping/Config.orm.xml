@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
 	http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 	
-	<entity name="ASF\WebsiteBundle\Entity\Group" table="asf_website_group">
+	<entity name="ASF\WebsiteBundle\Entity\Config" table="asf_website_config" repository-class="ASF\WebsiteBundle\Repository\ConfigRepository">
 	    
 	    <id name="id" type="integer" column="id">
 	    	<generator strategy="AUTO" />
@@ -14,8 +14,17 @@
 	    
 	    <field name="alias" type="string" nullable="false" />
 	    
-	    <one-to-many field="parameters" target-entity="Parameter" mapped-by="Group">
+	    <field name="isDefault" type="boolean" />
+	    
+	    <field name="createdAt" type="datetime" nullable="false" />
+	    
+	    <field name="updatedAt" type="datetime" nullable="false" />
+	    
+	    <one-to-many field="parameters" target-entity="Parameter" mapped-by="group">
 	    	<join-column name="parameter_id" referenced-column-name="id" />
+	    	<cascade>
+	    		<cascade-all />
+	    	</cascade>
 	    </one-to-many>
 	    
 	</entity>

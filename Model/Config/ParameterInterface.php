@@ -25,13 +25,13 @@ interface ParameterInterface
 	/**
 	 * @return string
 	 */
-	public function getAlias();
+	public function getName();
 	
 	/**
-	 * @param string $alias
+	 * @param string $name
 	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
 	 */
-	public function setAlias($alias);
+	public function setName($name);
 	
 	/**
 	 * @return mixed
@@ -43,4 +43,15 @@ interface ParameterInterface
 	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
 	 */
 	public function setValue($value);
+	
+	/**
+	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
+	 */
+	public function getConfig();
+	
+	/**
+	 * @param ConfigInterface $config
+	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
+	 */
+	public function setConfig(ConfigInterface $config);
 }

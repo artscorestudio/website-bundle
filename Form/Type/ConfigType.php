@@ -17,26 +17,27 @@ use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use ASF\LayoutBundle\Form\Type\BaseCollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Parameter Form
+ * Website Config Form
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class GroupType extends AbstractType
+class ConfigType extends AbstractType
 {
     /**
      * @var ASFWebsiteEntityManagerInterface
      */
-    protected $groupManager;
+    protected $configManager;
     
     /**
-     * @param ASFWebsiteEntityManagerInterface $groupManager
+     * @param ASFWebsiteEntityManagerInterface $configManager
      */
-    public function __construct(ASFWebsiteEntityManagerInterface $groupManager)
+    public function __construct(ASFWebsiteEntityManagerInterface $configManager)
     {
-        $this->groupManager = $groupManager;
+        $this->configManager = $configManager;
     }
     
 	/**
@@ -46,7 +47,7 @@ class GroupType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('name', TextType::class, array(
-			'label' => 'Name',
+			'label' => 'Config name',
 			'required' => true
 		))
 		->add('alias', TextType::class, array(
@@ -60,6 +61,9 @@ class GroupType extends AbstractType
 			'allow_delete' => true,
 			'prototype' => true,
 			'containerId' => 'parameters-collection'
+		))
+		->add('isDefault', CheckboxType::class, array(
+			'label' => 'Configuration par défaut'
 		));
 	}
 	
@@ -70,7 +74,7 @@ class GroupType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => $this->groupManager->getClassName(),
+			'data_class' => $this->configManager->getClassName(),
 			'translation_domain' => 'asf_website'
 		));
 	}
@@ -81,6 +85,6 @@ class GroupType extends AbstractType
 	 */
 	public function getName()
 	{
-		return 'website_group_parameter_type';
+		return 'website_config_type';
 	}
 }

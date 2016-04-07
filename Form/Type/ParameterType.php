@@ -14,7 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
-use ASF\WebsiteBundle\Form\DataTransformer\IdToGroupTransformer;
+use ASF\WebsiteBundle\Form\DataTransformer\IdToConfigTransformer;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -35,15 +35,16 @@ class ParameterType extends AbstractType
     /**
      * @var ASFWebsiteEntityManagerInterface
      */
-    protected $groupManager;
+    protected $configManager;
     
     /**
      * @param ASFWebsiteEntityManagerInterface $parameterManager
+     * @param ASFWebsiteEntityManagerInterface $configManager
      */
-    public function __construct(ASFWebsiteEntityManagerInterface $parameterManager, ASFWebsiteEntityManagerInterface $groupManager)
+    public function __construct(ASFWebsiteEntityManagerInterface $parameterManager, ASFWebsiteEntityManagerInterface $configManager)
     {
         $this->parameterManager = $parameterManager;
-        $this->groupManager = $groupManager;
+        $this->configManager = $configManager;
     }
     
 	/**
@@ -52,21 +53,20 @@ class ParameterType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('alias', TextType::class, array(
-			'label' => 'Alias',
+		$builder->add('name', TextType::class, array(
+			'label' => 'Parameter name',
 			'required' => true
 		))
 		->add('value', TextType::class, array(
-			'label' => 'Value',
+			'label' => 'Parameter value',
 			'required' => true,
 		));
 		
-		$idToGroupTransformer = new IdToGroupTransformer($this->groupManager);
-		$builder->add('group', HiddenType::class, array(
+		$builder->add('config', HiddenType::class, array(
 			'required' => true
 		));
 		
-		$builder->get('group')->addModelTransformer($idToGroupTransformer);
+		$builder->get('config')->addModelTransformer(new IdToConfigTransformer($this->configManager));
 	}
 	
 	/**

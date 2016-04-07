@@ -18,12 +18,12 @@ use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class IdToGroupTransformer implements DataTransformerInterface
+class IdToConfigTransformer implements DataTransformerInterface
 {
 	/**
 	 * @var ASFWebsiteEntityManagerInterface
 	 */
-	protected $groupManager;
+	protected $configManager;
 	
 	/**
 	 * @var string
@@ -31,23 +31,23 @@ class IdToGroupTransformer implements DataTransformerInterface
 	protected $type;
 	
 	/**
-	 * @param ASFWebsiteEntityManagerInterface $groupManager
+	 * @param ASFWebsiteEntityManagerInterface $configManager
 	 */
-	public function __construct(ASFWebsiteEntityManagerInterface $groupManager)
+	public function __construct(ASFWebsiteEntityManagerInterface $configManager)
 	{
-		$this->groupManager = $groupManager;
+		$this->configManager = $configManager;
 	}
 	
 	/**
 	 * (non-PHPdoc)
 	 * @see \Symfony\Component\Form\DataTransformerInterface::transform()
 	 */
-	public function transform($group)
+	public function transform($config)
 	{
-		if ( is_null($group) )
+		if ( is_null($config) )
 			return '';
 		
-		return $group->getId();
+		return $config->getId();
 	}
 
 	/**
@@ -56,7 +56,7 @@ class IdToGroupTransformer implements DataTransformerInterface
 	 */
 	public function reverseTransform($id)
 	{
-		$group = $this->groupManager->getRepository()->findOneBy(array('id' => $id));
-		return $group;
+		$config = $this->configManager->getRepository()->findOneBy(array('id' => $id));
+		return $config;
 	}
 }

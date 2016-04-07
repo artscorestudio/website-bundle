@@ -25,7 +25,7 @@ abstract class Parameter implements ParameterInterface
 	/**
 	 * @var string
 	 */
-	protected $alias;
+	protected $name;
 	
 	/**
 	 * @var mixed
@@ -33,9 +33,9 @@ abstract class Parameter implements ParameterInterface
 	protected $value;
 	
 	/**
-	 * @var \ASF\WebsiteBundle\Model\Config\Group
+	 * @var \ASF\WebsiteBundle\Model\Config\ConfigInterface
 	 */
-	protected $group;
+	protected $config;
 	
 	/**
 	 * @return integer
@@ -48,18 +48,18 @@ abstract class Parameter implements ParameterInterface
 	/**
 	 * @return string
 	 */
-	public function getAlias()
+	public function getName()
 	{
-		return $this->alias;
+		return $this->name;
 	}
 	
 	/**
-	 * @param string $alias
-	 * @return \ASF\WebsiteBundle\Model\Config\Parameter
+	 * @param string $name
+	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
 	 */
-	public function setAlias($alias)
+	public function setName($name)
 	{
-		$this->alias = $alias;
+		$this->name = $name;
 		return $this;
 	}
 	
@@ -73,7 +73,7 @@ abstract class Parameter implements ParameterInterface
 	
 	/**
 	 * @param mixed $value
-	 * @return \ASF\WebsiteBundle\Model\Config\Parameter
+	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
 	 */
 	public function setValue($value)
 	{
@@ -82,20 +82,20 @@ abstract class Parameter implements ParameterInterface
 	}
 
 	/**
-	 * @return \ASF\WebsiteBundle\Model\Config\Group
+	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
 	 */
-	public function getGroup()
+	public function getConfig()
 	{
-		return $this->group;
+		return $this->config;
 	}
 	
 	/**
-	 * @param \ASF\WebsiteBundle\Model\Config\Group $group
+	 * @param \ASF\WebsiteBundle\Model\Config\ConfigInterface $config
 	 * @return \ASF\WebsiteBundle\Model\Config\ParameterInterface
 	 */
-	public function setGroup($group)
+	public function setConfig(ConfigInterface $config)
 	{
-		$this->group = $group;
+		$this->config = $config;
 		return $this;
 	}
 }
