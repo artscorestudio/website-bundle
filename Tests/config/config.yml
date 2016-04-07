@@ -10,6 +10,8 @@ framework:
         storage_id: session.storage.mock_file
     secret: "ThisTokenIsNotSoSecretChangeIt"
     translator: { fallbacks: ["%locale%"] }
+    form: ~
+    csrf_protection: ~
     templating:
         engines: ['twig']
     router:
@@ -27,7 +29,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        
+    
+# SwiftMailer Configuration    
+swiftmailer:
+    disable_delivery: true
+    
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -39,3 +45,13 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+        
+# FOSUser Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: ASF\UserBundle\Entity\User
+    
+# Liip Configuration
+liip_functional_test:
+    cache_sqlite_db: true
