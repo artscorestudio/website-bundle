@@ -68,6 +68,10 @@ asf_website:
     resource: "@ASFWebsiteBundle/Resources/config/routing/routing.yml"
 ```
 
+### Step 4 : Extend the bundle for entities
+
+If you want to use entities provides by this bundle, see [ASFWebsiteBundle entities][12].
+
 ### Next Steps
 
 Now you have completed the basic installation and configuration of the ASFWebsiteBundle, you are ready to learn about more advanced features and usages of the bundle.
@@ -76,13 +80,19 @@ The following documents are available :
 * [Overriding Default ASFWebsiteBundle Templates][7]
 * [Overriding Default ASFWebsiteBundle Controllers][8]
 * [Add new items in ASFWebsiteBundle menus][9]
+* [ASFWebsiteBundle Entities][12]
+* [ASFWebsiteBundle Layout Helpers][10]
+* [ASFWebsiteBundle Configuration Reference][11]
 
-[1]: https://packagist.org/packages/artscorestudio/layout-bundle
-[2]: https://symfony.com/download
-[3]: https://packagist.org/packages/symfony/assetic-bundle 
-[4]: https://packagist.org/packages/artscorestudio/core-bundle
-[5]: https://packagist.org/packages/artscorestudio/layout-bundle
-[6]: https://symfony.com/doc/current/book/translation.html
-[7]: templates.md
-[8]: controllers.md
-[9]: menus.md
+[1]:  https://packagist.org/packages/artscorestudio/layout-bundle
+[2]:  https://symfony.com/download
+[3]:  https://packagist.org/packages/symfony/assetic-bundle 
+[4]:  https://packagist.org/packages/artscorestudio/core-bundle
+[5]:  https://packagist.org/packages/artscorestudio/layout-bundle
+[6]:  https://symfony.com/doc/current/book/translation.html
+[7]:  templates.md
+[8]:  controllers.md
+[9]:  menus.md
+[10]: layout-helpers.md
+[11]: configuration.md
+[12]: entities.md
