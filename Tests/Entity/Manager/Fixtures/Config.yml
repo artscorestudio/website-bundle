@@ -1,8 +1,0 @@
-ASF\WebsiteBundle\Entity\Config:
-    testConfig:
-        name: "Config test"
-        alias: "config-test"
-        isDefault: true
-        createdAt: "2016-04-06 16:00:00"
-        updatedAt: "2016-04-06 16:00:00"
-        

@@ -9,7 +9,7 @@
  */
 namespace ASF\WebsiteBundle\Entity;
 
-use ASF\WebsiteBundle\Model\Config\Parameter as BaseParameter;
+use ASF\WebsiteBundle\Model\Config\ParameterModel;
 
 /**
  * Website Parameter Entity
@@ -17,4 +17,4 @@ use ASF\WebsiteBundle\Model\Config\Parameter as BaseParameter;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class Parameter extends BaseParameter {}
+class Parameter extends ParameterModel {}

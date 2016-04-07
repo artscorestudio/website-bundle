@@ -18,22 +18,6 @@ namespace ASF\WebsiteBundle\Model\Config;
 interface ConfigInterface
 {
 	/**
-	 * @return integer
-	 */
-	public function getId();
-	
-	/**
-	 * @return string
-	 */
-	public function getName();
-	
-	/**
-	 * @param string $name
-	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
-	 */
-	public function setName($name);
-	
-	/**
 	 * @return string
 	 */
 	public function getAlias();
@@ -71,26 +55,4 @@ interface ConfigInterface
 	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
 	 */
 	public function setIsDefault($isDefault);
-
-	/**
-	 * @return \DateTime
-	 */
-	public function getCreatedAt();
-	
-	/**
-	 * @param \DateTime $date
-	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
-	 */
-	public function setCreatedAt(\DateTime $date);
-	
-	/**
-	 * @return \DateTime
-	 */
-	public function getUpdatedAt();
-	
-	/**
-	 * @param \DateTime $date
-	 * @return \ASF\WebsiteBundle\Model\Config\ConfigInterface
-	 */
-	public function setUpdatedAt(\DateTime $date);
 }

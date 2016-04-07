@@ -9,7 +9,7 @@
  */
 namespace ASF\WebsiteBundle\Entity;
 
-use ASF\WebsiteBundle\Model\Config\Config as BaseConfig;
+use ASF\WebsiteBundle\Model\Config\ConfigModel;
 
 /**
  * Website Config Entity
@@ -17,4 +17,4 @@ use ASF\WebsiteBundle\Model\Config\Config as BaseConfig;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class Config extends BaseConfig {}
+class Config extends ConfigModel {}
