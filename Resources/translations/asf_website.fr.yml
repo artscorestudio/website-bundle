@@ -2,5 +2,21 @@
 Home: Accueil
 
 # Admin
-Menus Manager: Gestionnaire de menus
-Website informations: Informations site Internet
+Website Manager: Gestionnaire de site Internet
+Website Configurations: Configuration de site Internet
+
+# Config
+Config name: Nom
+Do you want to delete this config?: Êtes-vous sûr de vouloir supprimer cette configuration ? 
+No config was found.: Pas de configuration.
+New website config: Nouvelle configuration de site
+Created successfully: Créé(e) avec succès
+An error occurs when generating or getting the configuration: Une erreur est survenue lors de la création ou de la récupération de la configuration
+'The website config "%name%" successfully deleted.': 'La configuration de site "%name%" a bien été supprimée.'
+Alias (interal use): Alias (interne)
+List of parameters: Liste des paramètres
+Parameter name: Nom
+Parameter value: Valeur
+Website Configuration list: Liste de configuration de site Internet
+Add new configuration: Créer une nouvelle configuration
+'A website configuration already exists with the name "%name%".': 'Une configuration de site existe déjà avec le nom "%name%.'

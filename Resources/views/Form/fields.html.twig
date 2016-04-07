@@ -1,20 +1,26 @@
 {# --------------------------------- Group Parameter Form Type --------------------------------- #}
-{% block _website_group_parameter_type_errors %}
+{% block _website_config_type_errors %}
 {% spaceless %}
 	{{ block('form_errors')  }}
 {% endspaceless %}
 {% endblock %}
 
-{% block _website_group_parameter_type_widget %}
+{% block _website_config_type_widget %}
 {% spaceless %}
 
 	{{ form_errors(form) }}
 
+	<div clas="row">
+		<div class="col-xs-12">
+			{{ form_row(form.isDefault) }}
+		</div>
+	</div>
+
 	<div class="row">
-		<div class="col-xs-8">
+		<div class="col-xs-6">
 			{{ form_row(form.name) }}
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-3">
 			{{ form_row(form.alias) }}
 		</div>
 	</div>

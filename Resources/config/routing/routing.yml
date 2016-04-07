@@ -1,33 +1,8 @@
 # Backend
-asf_website_conf_homepage:
-    path: /admin/website
-    defaults: { _controller: "ASFWebsiteBundle:Admin:index" }
-        
-asf_website_menu_homepage:
-    path: /admin/website/menu
-    defaults: { _controller: "ASFWebsiteBundle:MenuBuilder:index" }
-    
-asf_website_menu_edit:
-    path: /admin/website/menu/edit/{id}
-    defaults: { _controller: "ASFWebsiteBundle:MenuBuilder:edit" }
-
-asf_website_config:
-    prefix: /admin/website/config
-    resource: "@ASFWebsiteBundle/resources/config/routing/website_config.yml"
+asf_website_backend:
+    prefix: /admin
+    resource: "@ASFWebsiteBundle/Resources/config/routing/backend.yml"
        
 # Frontend
-asf_website_public_homepage:
-    path: /
-    defaults: { _controller: "ASFWebsiteBundle:Public:index" }
-     
-asf_website_public_page_route:
-    path: /{path}
-    defaults: { _controller: "ASFWebsiteBundle:Public:page" }
-    requirements:
-        path: "^(?!admin|login|blog|js|css|fonts).+"
-        
-asf_website_public_post_route:
-    path: /{path}
-    defaults: { _controller: "ASFWebsiteBundle:Public:post" }
-    requirements:
-        path: "^(?!admin|login|js|css|fonts).+"
+asf_website_frontend:
+    resource: "@ASFWebsiteBundle/Resources/config/routing/frontend.yml"

@@ -1,0 +1,21 @@
+# Backend homepage
+asf_website_backend_homepage:
+    path: /website
+    defaults: { _controller: "ASFWebsiteBundle:Admin:index" }
+
+# Website Config
+asf_website_config_list:
+    path: /website/config/list
+    defaults: { _controller: "ASFWebsiteBundle:Config:list" }
+    
+asf_website_config_edit:
+    path: /website/config/edit/{id}
+    defaults: { _controller: "ASFWebsiteBundle:Config:edit" }
+    
+asf_website_config_add:
+    path: /website/config/add
+    defaults: { _controller: "ASFWebsiteBundle:Config:edit" }
+    
+asf_website_config_delete:
+    path: /website/config/delete/{id}
+    defaults: { _controller: "ASFWebsiteBundle:Config:delete" }
