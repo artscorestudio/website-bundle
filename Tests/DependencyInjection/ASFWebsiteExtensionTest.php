@@ -13,7 +13,7 @@ use ASF\WebsiteBundle\DependencyInjection\ASFWebsiteExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Bundle\AsseticBundle\DependencyInjection\AsseticExtension;
 use Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension;
-use FOS\JsRoutingBundle\DependencyInjection\FOSJsRoutingExtension;
+use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 
 /**
  * Bundle's Extension Test Suites
@@ -80,7 +80,7 @@ class ASFWebsiteExtensionTest extends \PHPUnit_Framework_TestCase
 			$bundles = $bundles = array(
 				'AsseticBundle' => 'Symfony\Bundle\AsseticBundle\AsseticBundle',
 				'TwigBundle' => 'Symfony\Bundle\TwigBundle\TwigBundle',
-				'FOSJsRoutingBundle' => 'FOS\JsRoutingBundle\FOSJsRoutingBundle',
+				'FOSUserBundle' => 'FOS\UserBundle\FOSUserBundle',
 			);
 		}
 		 
@@ -88,7 +88,7 @@ class ASFWebsiteExtensionTest extends \PHPUnit_Framework_TestCase
 			$extensions = array(
 				'assetic' => new AsseticExtension(),
 				'twig' => new TwigExtension(),
-				'fos_js_routing' => new FOSJsRoutingExtension(),
+				'fos_user' => new FOSUserExtension(),
 			);
 		}
 		
