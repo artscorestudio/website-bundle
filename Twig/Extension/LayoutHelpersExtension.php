@@ -62,9 +62,9 @@ class LayoutHelpersExtension extends \Twig_Extension
     	$this->config = count($defaultConfig) > 0 ? $defaultConfig[0] : null;
     	$parameters = array();
 
-    	if ( $configAlias === null ) {
+    	if ( $configAlias === null && $this->config !== null ) {
     		$params = $this->config->getParameters();
-    	} else {
+    	} elseif ( $this->config !== null ) {
     		$config = $this->configManager->getRepository()->findOneBy(array('alias' => $configAlias));
     		if ( $config === null ) {
     			throw new \Exception(sprintf('The configuration with name "%s" not found.', $configAlias));
@@ -72,11 +72,13 @@ class LayoutHelpersExtension extends \Twig_Extension
     		$params = $config->getParameters();
     	}
     	
-    	if ( isset($params) ) {
-    		foreach($params as $p) {
-    			$parameters[$p->getName()] = $p->getValue();
-    		}
+    	if ( !isset($params) ) {
+    		return;
     	}
+    	
+   		foreach($params as $p) {
+   			$parameters[$p->getName()] = $p->getValue();
+   		}
     	
     	if ( $debug === true && !isset($parameters[$parameterName]) ) {
     		throw new \Exception(sprintf('The parameter with name "%s" not found.', $parameterName));
