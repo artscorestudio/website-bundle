@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\WebsiteBundle\Entity\Manager;
+namespace ASF\WebsiteBundle\Utils\Manager;
 
 use ASF\CoreBundle\Utils\Manager\ASFEntityManager;
 
