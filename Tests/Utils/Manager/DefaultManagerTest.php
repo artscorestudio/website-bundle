@@ -7,10 +7,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\WebsiteBundle\Tests\Entity\Manager;
+namespace ASF\WebsiteBundle\Tests\Utils\Manager;
 
 use Doctrine\ORM\EntityManager;
-use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManager;
+use ASF\WebsiteBundle\Utils\Manager\DefaultManager;
 use ASF\WebsiteBundle\Entity\Config;
 
 /**
@@ -19,12 +19,12 @@ use ASF\WebsiteBundle\Entity\Config;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class ASFWebsiteEntityManagerTest extends \PHPUnit_Framework_TestCase
+class DefaultManagerTest extends \PHPUnit_Framework_TestCase
 {
 	const CONFIG_CLASS = 'ASF\WebsiteBundle\Tests\EntityManager\DummyConfig';
 	
     /**
-     * @var \ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface
+     * @var \ASF\WebsiteBundle\Utils\Manager\DefaultManager
      */
     protected $configManager;
     
@@ -75,7 +75,7 @@ class ASFWebsiteEntityManagerTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * @covers ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManager
+     * @covers ASF\WebsiteBundle\Utils\Manager\DefaultManager
      */
     public function testWebsiteEntityManager()
     {
@@ -88,11 +88,11 @@ class ASFWebsiteEntityManagerTest extends \PHPUnit_Framework_TestCase
      * @param \PHPUnit_Framework_MockObject_MockObject $entity_manager
      * @param string                                   $entity_name
      * 
-     * @return \ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManager
+     * @return \ASF\WebsiteBundle\Utils\Manager\DefaultManager
      */
     protected function createConfigManager($entity_manager, $entity_name)
     {
-    	return new ASFWebsiteEntityManager($entity_manager, $entity_name);
+    	return new DefaultManager($entity_manager, $entity_name);
     }
 }
 

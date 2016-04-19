@@ -13,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
+use ASF\WebsiteBundle\Utils\Manager\DefaultManagerInterface;
 use ASF\WebsiteBundle\Form\DataTransformer\IdToConfigTransformer;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,20 +28,20 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 class ParameterType extends AbstractType
 {
     /**
-     * @var ASFWebsiteEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $parameterManager;
     
     /**
-     * @var ASFWebsiteEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $configManager;
     
     /**
-     * @param ASFWebsiteEntityManagerInterface $parameterManager
-     * @param ASFWebsiteEntityManagerInterface $configManager
+     * @param DefaultManagerInterface $parameterManager
+     * @param DefaultManagerInterface $configManager
      */
-    public function __construct(ASFWebsiteEntityManagerInterface $parameterManager, ASFWebsiteEntityManagerInterface $configManager)
+    public function __construct(DefaultManagerInterface $parameterManager, DefaultManagerInterface $configManager)
     {
         $this->parameterManager = $parameterManager;
         $this->configManager = $configManager;

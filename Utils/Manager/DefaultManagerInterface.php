@@ -7,15 +7,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\WebsiteBundle\Entity\Manager;
+namespace ASF\WebsiteBundle\Utils\Manager;
 
 /**
- * Website Manager Interface
+ * Generic Manager Interface for this bundle
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-interface ASFWebsiteEntityManagerInterface
+interface DefaultManagerInterface
 {
     /**
      * Return the entity class name

@@ -9,12 +9,12 @@
  */
 namespace ASF\WebsiteBundle\Utils\Manager;
 
-use ASF\CoreBundle\Utils\Manager\ASFEntityManager;
+use ASF\CoreBundle\Utils\Manager\ASFManager;
 
 /**
- * Generic Entity Manager for this bundle
+ * Generic Manager for this bundle
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class ASFWebsiteEntityManager extends ASFEntityManager implements ASFWebsiteEntityManagerInterface {}
+class DefaultManager extends ASFManager implements DefaultManagerInterface {}

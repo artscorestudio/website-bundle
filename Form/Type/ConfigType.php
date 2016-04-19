@@ -13,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
+use ASF\WebsiteBundle\Utils\Manager\DefaultManagerInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use ASF\LayoutBundle\Form\Type\BaseCollectionType;
@@ -28,14 +28,14 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class ConfigType extends AbstractType
 {
     /**
-     * @var ASFWebsiteEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $configManager;
     
     /**
-     * @param ASFWebsiteEntityManagerInterface $configManager
+     * @param DefaultManagerInterface $configManager
      */
-    public function __construct(ASFWebsiteEntityManagerInterface $configManager)
+    public function __construct(DefaultManagerInterface $configManager)
     {
         $this->configManager = $configManager;
     }

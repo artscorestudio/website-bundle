@@ -9,9 +9,8 @@
  */
 namespace ASF\WebsiteBundle\Twig\Extension;
 
-use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
+use ASF\WebsiteBundle\Utils\Manager\DefaultManagerInterface;
 use ASF\WebsiteBundle\Model\Config\ConfigInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Website Layout Helpers Extension
@@ -22,7 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class LayoutHelpersExtension extends \Twig_Extension
 {
     /**
-     * @var ASFWebsiteEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $configManager;
 
@@ -32,9 +31,9 @@ class LayoutHelpersExtension extends \Twig_Extension
     protected $config;
     
     /**
-     * @param ASFWebsiteEntityManagerInterface $configManager
+     * @param DefaultManagerInterface $configManager
      */
-    public function __construct(ASFWebsiteEntityManagerInterface $configManager)
+    public function __construct(DefaultManagerInterface $configManager)
     {
         $this->configManager = $configManager;
     }

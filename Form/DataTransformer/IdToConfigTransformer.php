@@ -10,7 +10,7 @@
 namespace ASF\WebsiteBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
+use ASF\WebsiteBundle\Utils\Manager\DefaultManagerInterface;
 
 /**
  * Transform an ID to an Group entity
@@ -21,7 +21,7 @@ use ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManagerInterface;
 class IdToConfigTransformer implements DataTransformerInterface
 {
 	/**
-	 * @var ASFWebsiteEntityManagerInterface
+	 * @var DefaultManagerInterface
 	 */
 	protected $configManager;
 	
@@ -31,9 +31,9 @@ class IdToConfigTransformer implements DataTransformerInterface
 	protected $type;
 	
 	/**
-	 * @param ASFWebsiteEntityManagerInterface $configManager
+	 * @param DefaultManagerInterface $configManager
 	 */
-	public function __construct(ASFWebsiteEntityManagerInterface $configManager)
+	public function __construct(DefaultManagerInterface $configManager)
 	{
 		$this->configManager = $configManager;
 	}
