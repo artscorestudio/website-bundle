@@ -12,7 +12,7 @@ Website Bundle is a Symfony 2/3 bundle for create and manage frontends in your S
 
 The bulk of the documentation is stored in the Resources/docs/index.md file in bundle :
 
-[Read the documentation for 1.2.1](https://github.com/artscorestudio/website-bundle/blob/1.2.1/Resources/doc/index.md).
+[Read the documentation for master](https://github.com/artscorestudio/website-bundle/blob/master/Resources/doc/index.md).
 
 ## Installation
 
