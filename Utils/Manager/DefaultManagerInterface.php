@@ -9,13 +9,15 @@
  */
 namespace ASF\WebsiteBundle\Utils\Manager;
 
+use ASF\CoreBundle\Utils\Manager\ASFManagerInterface;
+
 /**
  * Generic Manager Interface for this bundle
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-interface DefaultManagerInterface
+interface DefaultManagerInterface extends ASFManagerInterface
 {
     /**
      * Return the entity class name

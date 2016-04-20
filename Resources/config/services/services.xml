@@ -5,7 +5,7 @@
 	
 	<parameters>
 		<!-- Generic Entity Manager -->
-    	<parameter key="asf_website.entity.manager.class">ASF\WebsiteBundle\Entity\Manager\ASFWebsiteEntityManager</parameter>
+    	<parameter key="asf_website.default.manager.class">ASF\WebsiteBundle\Utils\Manager\DefaultManager</parameter>
 		
 		<parameter key="asf_website.config.entity.class">ASF\WebsiteBundle\Entity\Config</parameter>
 		<parameter key="asf_website.parameter.entity.class">ASF\WebsiteBundle\Entity\Parameter</parameter>
@@ -24,7 +24,7 @@
 	<services>
         
         <!-- Website Config Entity Manager -->
-        <service id="asf_website.config.manager" class="%asf_website.entity.manager.class%">
+        <service id="asf_website.config.manager" class="%asf_website.default.manager.class%">
             <tag name="asf_core.manager" entity="%asf_website.config.entity.class%" />
         </service>
         
@@ -41,7 +41,7 @@
 		</service>
         
         <!-- Parameter Entity Manager -->
-        <service id="asf_website.parameter.manager" class="%asf_website.entity.manager.class%">
+        <service id="asf_website.parameter.manager" class="%asf_website.default.manager.class%">
             <tag name="asf_core.manager" entity="%asf_website.parameter.entity.class%" />
         </service>
         
