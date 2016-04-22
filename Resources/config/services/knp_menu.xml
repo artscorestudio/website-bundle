@@ -5,7 +5,6 @@
 	
 	<parameters>
 		<parameter key="asf_website.menu_builder.class">ASF\WebsiteBundle\Menu\MenuBuilder</parameter>
-		<parameter key="asf_website.menu.subscriber.class">ASF\WebsiteBundle\Event\MenuSubscriber</parameter>
 	</parameters>
 	 
 	<services>
@@ -14,12 +13,6 @@
         	<argument type="service" id="event_dispatcher" />
         	<argument type="service" id="request_stack" />
             <tag name="knp_menu.menu_builder" method="createPrimaryMenu" alias="primary_menu" />
-        </service>
-        
-        <service id="asf_website.menu.subscriber" class="%asf_website.menu.subscriber.class%">
-        	<argument type="service" id="request_stack" />
-        	<argument type="service" id="translator" />
-        	<tag name="kernel.event_subscriber" />
         </service>
 	</services>
 	
